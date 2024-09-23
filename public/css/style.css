@@ -1,0 +1,19 @@
+.custom-alert {
+    position: fixed;
+    top: 20px;
+    right: -400px; /* Bắt đầu từ ngoài màn hình bên phải */
+    min-width: 300px; /* Kích thước nhỏ */
+    z-index: 1050; /* Đảm bảo hiển thị phía trên các phần tử khác */
+    opacity: 0;
+    transition: right 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.custom-alert.show {
+    right: 20px; /* Vị trí khi alert xuất hiện */
+    opacity: 1;
+}
+
+.custom-alert.hide {
+    right: -400px; /* Biến mất về bên phải */
+    opacity: 0;
+}
