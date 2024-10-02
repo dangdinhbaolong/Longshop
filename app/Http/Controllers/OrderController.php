@@ -20,7 +20,34 @@ class OrderController extends Controller
     {
         $user = Auth::user();
         $orders = Order::where('user_id', $user->id)
-                   ->where('payment_status', '!=', 'Bị hủy')
+                   ->where('status', '=', 'Chờ xử lý')
+                   ->orderBy('created_at', 'desc')
+                   ->get();
+        return view('order.index', compact('orders'));
+    }
+    public function cancel()
+    {
+        $user = Auth::user();
+        $orders = Order::where('user_id', $user->id)
+                   ->where('status', '=', 'Bị hủy')
+                   ->orderBy('created_at', 'desc')
+                   ->get();
+        return view('order.index', compact('orders'));
+    }
+    public function dilivered()
+    {
+        $user = Auth::user();
+        $orders = Order::where('user_id', $user->id)
+                   ->where('status', '=', 'Đang giao hàng')
+                   ->orderBy('created_at', 'desc')
+                   ->get();
+        return view('order.index', compact('orders'));
+    }
+    public function complete()
+    {
+        $user = Auth::user();
+        $orders = Order::where('user_id', $user->id)
+                   ->where('status', '=', 'Đã giao')
                    ->orderBy('created_at', 'desc')
                    ->get();
         return view('order.index', compact('orders'));
@@ -29,10 +56,10 @@ class OrderController extends Controller
      $order = Order::find($id);
      if($order){
         $order->update([
-            'status' =>'Bi huy'
+            'status' =>'Bị hủy'
         ]);
         $orders = Order::all();
-        return view('order.index', compact('orders'));
+        return view('order.index', compact('orders'))->with('delete', 'Product deleted successfully');
      }
      return redirect()->back()->with('error', 'Order not found.');
     }

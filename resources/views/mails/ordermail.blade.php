@@ -44,7 +44,7 @@
                 </tr>
                 <tr>
                     <td>Ngày đặt hàng:</td>
-                    <td>{{ $order->created_at->format('d/m/Y H:i') }}</td>
+                    <td>{{ $order->created_at->format('d/m/Y') }}</td>
                 </tr>
             </tbody>
         </table>
@@ -60,7 +60,7 @@
                             target="_blank">
                             <img src="{{ asset('images/products/' . $item->product->image_path) }}" alt="{{ $item->product->name }}" 
                                  class="img-fluid" style="max-width: 140px;">
-                        </a>
+
                     </td>
                     <td>
                         <p>{{ $item->product->name }}</p>

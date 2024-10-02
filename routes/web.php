@@ -53,7 +53,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
     Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
     Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/order/cancel', [OrderController::class, 'cancel'])->name('order.cancel');
+    Route::get('/order/dilivered', [OrderController::class, 'dilivered'])->name('order.dilivered');
+    Route::get('/order/complete', [OrderController::class, 'complete'])->name('order.complete');
     Route::get('/order/show/{id}', [OrderController::class, 'show'])->name('order.show');
+    Route::get('/order/delete/{id}', [OrderController::class, 'delete'])->name('order.delete');
 
     Route::get('/payment/momo/{order}', [PaymentController::class, 'createMoMoPayment'])->name('payment.momo');
     Route::get('/momo/return', [PaymentController::class, 'handleMoMoReturn'])->name('momo.return');

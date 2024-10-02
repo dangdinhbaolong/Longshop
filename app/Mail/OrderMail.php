@@ -25,7 +25,7 @@ class OrderMail extends Mailable
     public function build()
     {
         return $this->view('mails.ordermail')
-                    ->subject('Xác nhận đăng ký tài khoản')//tiêu đề email
+                    ->subject('Xác nhận đặt hàng thành công')//tiêu đề email
                     ->from('ddanglong09@gmail.com', 'Đặng Đình Bảo Long')//tùy chỉnh email và tên 
                     ->with([
                         'order' => $this->order,
