@@ -43,7 +43,7 @@
                                         <td>{{ $order->payment_status }}</td>
                                         <td>
                                             <a href="{{ route('order.show', $order ->id )}}" class="btn btn-info"><i class="fas fa-eye" title="Chi tiết đơn hàng"></i> </a>
-                                            <a href="" class="btn btn-danger"><i class="fa-solid fa-trash" title="Hủy đơn hàng"></i></a>
+                                            <a href="{{ route('order.delete', $order->id) }}" class="btn btn-danger"><i class="fa-solid fa-trash" title="Hủy đơn hàng"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

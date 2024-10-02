@@ -7,7 +7,8 @@ use App\Models\Order;
 use App\Models\User;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderMail;
 
 class OrderController extends Controller
 {
@@ -23,6 +24,17 @@ class OrderController extends Controller
                    ->orderBy('created_at', 'desc')
                    ->get();
         return view('order.index', compact('orders'));
+    }
+    public function delete($id){
+     $order = Order::find($id);
+     if($order){
+        $order->update([
+            'status' =>'Bi huy'
+        ]);
+        $orders = Order::all();
+        return view('order.index', compact('orders'));
+     }
+     return redirect()->back()->with('error', 'Order not found.');
     }
 
     function show($id)
@@ -80,6 +92,7 @@ class OrderController extends Controller
                 $order->payment_status  = 'Chưa thanh toán';
                 $order->cod_id = 'COD_'.time();
                 $order->save();
+                Mail::to($order->user->email)->send(new OrderMail($order));
                 return redirect()->route('order.success')->with('message', 'Đặt hàng thành công! Bạn sẽ thanh toán khi nhận hàng.');
 
             case 'Momo':
