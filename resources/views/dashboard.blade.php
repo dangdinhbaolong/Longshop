@@ -32,15 +32,15 @@
             <!-- The slideshow/carousel -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://www.shutterstock.com/shutterstock/photos/1575804547/display_1500/stock-vector-shopping-sale-banner-on-red-background-header-banner-template-design-for-web-promotion-flyer-1575804547.jpg"
+                    <img src="https://thudaumot.edu.vn/wp-content/uploads/2021/04/Banner-quang-cao-may-tinh-3.jpg"
                         alt="Los Angeles" class="d-block" style="width:100%">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://www.shutterstock.com/shutterstock/photos/1575804547/display_1500/stock-vector-shopping-sale-banner-on-red-background-header-banner-template-design-for-web-promotion-flyer-1575804547.jpg"
+                    <img src="https://thudaumot.edu.vn/wp-content/uploads/2021/04/Banner-quang-cao-may-tinh-3.jpg"
                         alt="Chicago" class="d-block" style="width:100%">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://www.shutterstock.com/shutterstock/photos/1575804547/display_1500/stock-vector-shopping-sale-banner-on-red-background-header-banner-template-design-for-web-promotion-flyer-1575804547.jpg"
+                    <img src="https://thudaumot.edu.vn/wp-content/uploads/2021/04/Banner-quang-cao-may-tinh-3.jpg"
                         alt="New York" class="d-block" style="width:100%">
                 </div>
             </div>

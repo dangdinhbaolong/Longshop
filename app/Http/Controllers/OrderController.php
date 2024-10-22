@@ -119,7 +119,8 @@ class OrderController extends Controller
                 $order->payment_status  = 'Chưa thanh toán';
                 $order->cod_id = 'COD_'.time();
                 $order->save();
-                Mail::to($order->user->email)->send(new OrderMail($order));
+                $user = $order->user;
+                Mail::to($user->email)->send(new OrderMail($order));
                 return redirect()->route('order.success')->with('message', 'Đặt hàng thành công! Bạn sẽ thanh toán khi nhận hàng.');
 
             case 'Momo':

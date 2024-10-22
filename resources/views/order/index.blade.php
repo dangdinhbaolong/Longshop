@@ -16,23 +16,38 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     @if ($orders->isEmpty())
-                        <p>Bạn chưa có đơn hàng nào.</p>
+                    <ul class="nav nav-pills nav-justified">
+                        <li class="nav-item">
+                            <a class="nav-link  {{ Route::is('order.index') ? 'active' : '' }}" href="{{ route('order.index') }}">Chờ xử lý</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::is('order.dilivered') ? 'active' : '' }}" href="{{ route('order.dilivered') }}">Đang giao hàng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::is('order.complete') ? 'active' : '' }}" href="{{ route('order.complete') }}">Đã giao hàng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::is('order.cancel') ? 'active' : '' }}" href="{{ route('order.cancel') }}">Bị hủy</a>
+                        </li>
+                    </ul>
+
+                        <h4 class="p-3 text-danger ">Bạn chưa có đơn hàng nào.</h4>
                     @else
                     <ul class="nav nav-pills nav-justified">
                         <li class="nav-item">
-                          <a class="nav-link active" href="{{ route('order.index') }}">Chờ xử lý</a>
+                            <a class="nav-link {{ Route::is('order.index') ? 'active' : '' }}" href="{{ route('order.index') }}">Chờ xử lý</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="{{ route('order.dilivered') }}">Đang giao hàng</a>
+                            <a class="nav-link {{ Route::is('order.dilivered') ? 'active' : '' }}" href="{{ route('order.dilivered') }}">Đang giao hàng</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="{{ route('order.complete') }}">Đã giao hàng</a>
+                            <a class="nav-link {{ Route::is('order.complete') ? 'active' : '' }}" href="{{ route('order.complete') }}">Đã giao hàng</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="{{ route('order.cancel') }}">Bị hủy </a>
+                            <a class="nav-link {{ Route::is('order.cancel') ? 'active' : '' }}" href="{{ route('order.cancel') }}">Bị hủy</a>
                         </li>
-                      </ul><br>
-                      </ul>
+                    </ul>
+                    
                         <table class="table">
                             <thead>
                                 <tr>
@@ -53,12 +68,16 @@
                                                 {{ $order->transaction_id }}
                                             @endif
                                         </td>
-                                        <td>{{ $order->created_at->format('d/m/Y') }}</td>
+                                        <td>
+                                            {{ $order->created_at ? $order->created_at->format('d/m/Y') : 'N/A' }}
+                                        </td>                                        
                                         <td>{{ number_format($order->amount, 0, ',', '.') }} VND</td>
                                         <td>{{ $order->status }}</td>
                                         <td>
-                                            <a href="{{ route('order.show', $order ->id )}}" class="btn btn-info"><i class="fas fa-eye" title="Chi tiết đơn hàng"></i> </a>
-                                            <a href="{{ route('order.delete', $order->id) }}" class="btn btn-danger"><i class="fa-solid fa-trash" title="Hủy đơn hàng"></i></a>
+                                            <a href="{{ route('order.show', $order->id) }}" class="btn btn-info"><i
+                                                    class="fas fa-eye" title="Chi tiết đơn hàng"></i> </a>
+                                            <a href="{{ route('order.delete', $order->id) }}" class="btn btn-danger"><i
+                                                    class="fa-solid fa-trash" title="Hủy đơn hàng"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
